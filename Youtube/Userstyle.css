@@ -18,7 +18,7 @@
     --h-parchment-alt: #f7f1e3;
     --h-white:         #ffffff;
     --h-border:        #000000;
-    --h-accent:        #6ab8b0;
+    --h-accent:        #6ab8b0;  /*accent color can be changed in this variable, the hover and lighter colors are automated from this, default is #6ab8b0*/
     --h-accent-hover:  color-mix(in srgb, var(--h-accent) 85%, black);
     --h-accent-light:  color-mix(in srgb, var(--h-accent) 35%, white);
     --h-text-dark:     #1a1410;
