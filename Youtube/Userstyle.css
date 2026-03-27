@@ -8,379 +8,6 @@
 @preprocessor default
 ==/UserStyle== */
 
-@-moz-document domain("youtube.com") {
-
-  /* ═══════════════════════════════════════════════════════════
-     PALETTE VARIABLES
-  ═══════════════════════════════════════════════════════════ */
-  :root {
-    --h-parchment:     #fff9ec;
-    --h-parchment-alt: #f7f1e3;
-    --h-white:         #ffffff;
-    --h-border:        #000000;
-    --h-accent:        #6ab8b0;  /*accent color can be changed in this variable, the hover and lighter colors are automated from this, default is #6ab8b0*/
-    --h-accent-hover:  color-mix(in srgb, var(--h-accent) 85%, black);
-    --h-accent-light:  color-mix(in srgb, var(--h-accent) 35%, white);
-    --h-text-dark:     #1a1410;
-    --h-text-mid:      #4a3f32;
-    --h-text-muted:    #8a7e70;
-    --h-shadow:        rgba(26,20,16,0.18);
-    --h-red:           #c06060;
-
-    /* Theatre mode dark palette */
-    --h-theater-bg:          #121212;
-    --h-theater-bg-masthead: #121212;
-    --h-theater-surface:     #191919;
-    --h-theater-border:      #fff;
-    --h-theater-shadow:      #373737;
-    --h-theater-masthead-border: #fff;
-    --h-theater-hover:       #303030;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     SCROLLBAR
-  ═══════════════════════════════════════════════════════════ */
-  * {
-    scrollbar-width: thin !important;
-    scrollbar-color: var(--h-accent) var(--h-parchment) !important;
-  }
-  *::-webkit-scrollbar { width: 6px !important; }
-  *::-webkit-scrollbar-track { background: var(--h-parchment) !important; }
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--h-accent) !important;
-    border: 1px solid var(--h-border) !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     BASE
-  ═══════════════════════════════════════════════════════════ */
-  html,
-  body,
-  ytd-app {
-    background-color: var(--h-parchment-alt) !important;
-    color: var(--h-text-dark) !important;
-    font-family: Georgia, 'Times New Roman', serif !important;
-  }
-
-  /* Override YouTube's dark/light CSS variables */
-  :root,
-  html[dark],
-  ytd-app {
-    --yt-spec-base-background:           var(--h-parchment-alt) !important;
-    --yt-spec-raised-background:         var(--h-parchment) !important;
-    --yt-spec-menu-background:           var(--h-white) !important;
-    --yt-spec-inverted-background:        var(--h-text-dark) !important;
-    --yt-spec-text-primary:              var(--h-text-dark) !important;
-    --yt-spec-text-secondary:            var(--h-text-mid) !important;
-    --yt-spec-text-disabled:             var(--h-text-muted) !important;
-    --yt-spec-call-to-action:            var(--h-accent) !important;
-    --yt-spec-brand-button-background:   var(--h-accent) !important;
-    --yt-spec-brand-link-text:           var(--h-accent) !important;
-    --yt-spec-icon-active-other:         var(--h-accent) !important;
-    --yt-spec-outline:                   var(--h-border) !important;
-    --yt-spec-10-percent-layer:          rgba(26,20,16,0.06) !important;
-    --yt-spec-badge-chip-background:     var(--h-accent-light) !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     HEADER / MASTHEAD
-     Prefix with both html and html[dark] to outspecify
-     YouTube's own dark-mode masthead rule so it always
-     reverts to parchment when leaving theater mode.
-  ═══════════════════════════════════════════════════════════ */
-  html #masthead,
-  html ytd-masthead,
-  html #masthead-container,
-  html[dark] #masthead,
-  html[dark] ytd-masthead,
-  html[dark] #masthead-container {
-    background-color: var(--h-parchment) !important;
-    border-bottom: 1px solid var(--h-border) !important;
-    box-shadow: none !important;
-  }
-
-  /* Logo */
-  #logo,
-  ytd-logo,
-  #logo-icon {
-    color: var(--h-text-dark) !important;
-  }
-
-  /* Create button in masthead */
-  ytd-masthead #buttons ytd-button-renderer button,
-  ytd-masthead #buttons yt-button-shape button {
-    background-color: var(--h-accent) !important;
-    border: 2px solid var(--h-border) !important;
-    border-radius: 4px !important;
-    box-shadow: 2px 2px 0 var(--h-border) !important;
-    color: var(--h-white) !important;
-    font-family: Georgia, serif !important;
-    font-weight: 700 !important;
-  }
-
-  ytd-masthead #buttons ytd-button-renderer button:hover,
-  ytd-masthead #buttons yt-button-shape button:hover {
-    background-color: var(--h-accent-hover) !important;
-  }
-
-  /* Guide / masthead icon buttons hover */
-  yt-icon-button.ytd-masthead:hover,
-  #guide-button.ytd-masthead:hover,
-  ytd-masthead yt-icon-button:hover {
-    background-color: var(--h-accent-light) !important;
-    border-radius: 4px !important;
-  }
-
-  /* Hamburger + notifications — theater mode hover */
-  ytd-app:has(ytd-watch-flexy[theater]) yt-icon-button.ytd-masthead:hover,
-  ytd-app:has(ytd-watch-flexy[theater]) #guide-button.ytd-masthead:hover,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead yt-icon-button:hover {
-    background-color: var(--h-theater-hover) !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     SEARCH BAR
-  ═══════════════════════════════════════════════════════════ */
-  #search-form,
-  ytd-searchbox,
-  yt-searchbox,
-  #search {
-    background-color: transparent !important;
-  }
-
-  /* Input container — the pill wrapper */
-  .ytSearchboxComponentInputContainer {
-    background-color: var(--h-white) !important;
-    border: 2px solid var(--h-border) !important;
-    border-right: none !important;
-    border-radius: 4px 0 0 4px !important;
-    box-shadow: 2px 2px 0 var(--h-border) !important;
-    height: 40px !important;
-    box-sizing: border-box !important;
-    align-items: center !important;
-  }
-
-  /* Inner box — kill its own border/shadow */
-  .ytSearchboxComponentInputBox {
-    border: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-    outline: none !important;
-    height: 100% !important;
-  }
-
-  /* The actual <input> element */
-  .ytSearchboxComponentInput {
-    background-color: transparent !important;
-    color: var(--h-text-dark) !important;
-    font-family: Georgia, serif !important;
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    height: 100% !important;
-  }
-
-  /* Focus state on container + button */
-  .ytSearchboxComponentInputContainerIsFocused {
-    border-color: var(--h-accent-hover) !important;
-    box-shadow: 2px 2px 0 var(--h-accent-hover) !important;
-  }
-
-  .ytSearchboxComponentInputContainerIsFocused .ytSearchboxComponentSearchButton {
-    border-color: var(--h-accent-hover) !important;
-    box-shadow: 2px 2px 0 var(--h-accent-hover) !important;
-  }
-
-  /* Kill any remaining focus outlines on inner elements */
-  .ytSearchboxComponentInput:focus,
-  .ytSearchboxComponentInput:focus-visible,
-  .ytSearchboxComponentInputBox:focus,
-  .ytSearchboxComponentInputBox:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-
-  /* Search (magnifier) button */
-  #search-icon-legacy,
-  button#search-icon-legacy,
-  ytd-searchbox #search-icon-legacy,
-  yt-searchbox #search-icon-legacy,
-  .ytSearchboxComponentSearchButton {
-    background-color: var(--h-accent) !important;
-    border: 2px solid var(--h-border) !important;
-    border-radius: 0 4px 4px 0 !important;
-    box-shadow: 2px 2px 0 var(--h-border) !important;
-    color: var(--h-white) !important;
-    height: 40px !important;
-    box-sizing: border-box !important;
-    margin-right: -2px !important;
-  }
-
-  #search-icon-legacy:hover,
-  .ytSearchboxComponentSearchButton:hover {
-    background-color: var(--h-accent-hover) !important;
-  }
-
-  /* Mic button */
-  #voice-search-button button,
-  ytd-masthead #voice-search-button .yt-spec-button-shape-next {
-    background-color: var(--h-parchment) !important;
-    border: 2px solid var(--h-border) !important;
-    border-radius: 4px !important;
-    box-shadow: 2px 2px 0 var(--h-border) !important;
-    color: var(--h-text-dark) !important;
-  }
-
-  #voice-search-button button:hover,
-  ytd-masthead #voice-search-button .yt-spec-button-shape-next:hover {
-    background-color: var(--h-accent-light) !important;
-  }
-
-  /* Search suggestions dropdown */
-  ytd-searchbox[has-focus] #suggestions-container,
-  ytd-searchbox #suggestions-container,
-  yt-searchbox #suggestions-container,
-  .ytSearchboxComponentSuggestionsContainer {
-    background-color: var(--h-white) !important;
-    border: 2px solid var(--h-accent-hover) !important;
-    border-top: none !important;
-    border-radius: 0 0 4px 4px !important;
-    box-shadow: 2px 2px 0 var(--h-accent-hover) !important;
-    margin-top: -7px !important;
-  }
-
-  /* Individual suggestion rows */
-  .ytSuggestionComponentSuggestion {
-    font-family: Georgia, serif !important;
-    color: var(--h-text-dark) !important;
-    border-radius: 0 !important;
-  }
-
-  .ytSuggestionComponentSuggestion:hover,
-  .ytSuggestionComponentLargerSonentRoundedSuggestion:hover {
-    background-color: var(--h-accent-light) !important;
-  }
-
-  /* Highlighted/active suggestion */
-  .ytSuggestionComponentSuggestion[aria-selected="true"] {
-    background-color: var(--h-accent-light) !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     SIDEBAR / GUIDE
-  ═══════════════════════════════════════════════════════════ */
-  #guide-content,
-  ytd-guide-renderer,
-  app-drawer,
-  #guide {
-    background-color: var(--h-parchment) !important;
-    border-right: 1px solid var(--h-border) !important;
-  }
-
-  ytd-guide-entry-renderer,
-  ytd-mini-guide-entry-renderer {
-    color: var(--h-text-dark) !important;
-    font-family: Georgia, serif !important;
-    border: 2px solid transparent !important;
-    border-radius: 4px !important;
-  }
-
-  ytd-guide-entry-renderer[active],
-  ytd-mini-guide-entry-renderer[active] {
-    background-color: var(--h-accent-light) !important;
-  }
-
-  ytd-guide-entry-renderer:hover,
-  ytd-mini-guide-entry-renderer:hover {
-    background-color: var(--h-accent-light) !important;
-    border: 2px solid var(--h-accent) !important;
-  }
-
-  ytd-guide-section-renderer #guide-section-title {
-    color: var(--h-text-muted) !important;
-    font-family: Georgia, serif !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-  }
-
-  /* Mini guide (collapsed sidebar) */
-  ytd-mini-guide-renderer {
-    background-color: var(--h-parchment) !important;
-    border-right: 2px solid var(--h-border) !important;
-  }
-
-  #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-    background-color: transparent !important;
-  }
-
-  #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active,
-  .ytd-guide-entry-renderer:active,
-  ytd-guide-entry-renderer:active,
-  ytd-guide-entry-renderer[active],
-  ytd-guide-entry-renderer tp-yt-paper-item:active,
-  ytd-guide-entry-renderer tp-yt-paper-item[pressed] {
-    background-color: var(--h-accent-light) !important;
-    border-radius: 4px !important;
-  }
-
-  ytd-guide-entry-renderer[active] tp-yt-paper-item::before,
-  ytd-guide-entry-renderer tp-yt-paper-item:active::before,
-  ytd-guide-entry-renderer tp-yt-paper-item[pressed]::before,
-  ytd-guide-entry-renderer tp-yt-paper-item::before {
-    background-color: transparent !important;
-    opacity: 0 !important;
-  }
-
-  /* Kill yt-interaction ripple entirely on guide entries */
-  ytd-guide-entry-renderer yt-interaction,
-  ytd-guide-entry-renderer yt-interaction.down,
-  ytd-guide-entry-renderer yt-interaction * {
-    background-color: transparent !important;
-    opacity: 0 !important;
-    animation: none !important;
-    transition: none !important;
-  }
-
-  #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus,
-  #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus-visible,
-  .ytd-guide-entry-renderer:focus,
-  ytd-guide-entry-renderer:focus {
-    background-color: var(--h-accent-light) !important;
-    border-radius: 4px !important;
-    outline: 2px solid var(--h-accent) !important;
-  }
-
-  /* Kill tp-yt-paper-item focus dark overlay in sidebar */
-  tp-yt-paper-item:focus,
-  tp-yt-paper-item.ytd-guide-entry-renderer:focus {
-    --paper-item-focused-background-color: transparent !important;
-    --paper-item-focused-before-border-radius: 4px !important;
-    background-color: transparent !important;
-    outline: none !important;
-  }
-
-  tp-yt-paper-item:focus::before,
-  tp-yt-paper-item.ytd-guide-entry-renderer:focus::before {
-    background-color: transparent !important;
-    opacity: 0 !important;
-    border-radius: 4px !important;
-  }
-
-  /* Normalize hover/active radius on paper item */
-  tp-yt-paper-item:hover,
-  tp-yt-paper-item:active,
-  tp-yt-paper-item:hover::before,
-  tp-yt-paper-item:active::before {
-    border-radius: 4px !important;
-  }
-
-  ytd-guide-entry-renderer tp-yt-paper-item,
-  ytd-guide-entry-renderer tp-yt-paper-item:hover,
-  ytd-guide-entry-renderer tp-yt-paper-item:active {
-    border-radius: 4px !important;
-    --paper-item-focused-before-border-radius: 4px !important;
-  }
 
   /* ═══════════════════════════════════════════════════════════
      PLAYLIST STACK / COLLECTION THUMBNAILS
@@ -1054,6 +681,7 @@ border: 2px solid var(--h-border) !important;
   ytd-popup-container ytd-multi-page-menu-renderer,
   tp-yt-iron-dropdown ytd-multi-page-menu-renderer,
   yt-sheet-view-model,
+  yt-contextual-sheet-layout,
   tp-yt-iron-dropdown yt-sheet-view-model,
   ytd-popup-container yt-sheet-view-model {
     background-color: var(--h-white) !important;
@@ -1125,68 +753,68 @@ border: 2px solid var(--h-border) !important;
   ytd-watch-flexy[theater] ~ * #masthead,
   ytd-watch-flexy[theater] ~ * ytd-masthead,
   ytd-watch-flexy[theater] ~ * #masthead-container,
-  ytd-app:has(ytd-watch-flexy[theater]) #masthead,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead,
-  ytd-app:has(ytd-watch-flexy[theater]) #masthead-container {
+  ytd-app.theater-active #masthead,
+  ytd-app.theater-active ytd-masthead,
+  ytd-app.theater-active #masthead-container {
     background-color: var(--h-theater-bg-masthead) !important;
     border-bottom-color: var(--h-theater-masthead-border) !important;
   }
 
   /* YouTube wordmark only — white in theatre mode (leaves red play button intact) */
-  ytd-app:has(ytd-watch-flexy[theater]) #youtube-paths-yt10 path,
-  ytd-app:has(ytd-watch-flexy[theater]) #youtube-paths-yt10 *,
-  ytd-app:has(ytd-watch-flexy[theater]) #yt-ringo2-svg-yt10 g:last-child path,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-logo yt-icon svg g ~ g path,
-  ytd-app:has(ytd-watch-flexy[theater]) #logo-icon yt-icon-shape span svg g ~ g path {
+  ytd-app.theater-active #youtube-paths-yt10 path,
+  ytd-app.theater-active #youtube-paths-yt10 *,
+  ytd-app.theater-active #yt-ringo2-svg-yt10 g:last-child path,
+  ytd-app.theater-active ytd-logo yt-icon svg g ~ g path,
+  ytd-app.theater-active #logo-icon yt-icon-shape span svg g ~ g path {
     fill: var(--h-white) !important;
     color: var(--h-white) !important;
   }
 
   /* Search input container — theater surface color */
-  ytd-app:has(ytd-watch-flexy[theater]) .ytSearchboxComponentInputContainer {
+  ytd-app.theater-active .ytSearchboxComponentInputContainer {
     background-color: var(--h-theater-surface) !important;
     border-color: var(--h-theater-border) !important;
     box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
   }
 
-  ytd-app:has(ytd-watch-flexy[theater]) .ytSearchboxComponentInput {
+  ytd-app.theater-active .ytSearchboxComponentInput {
     color: var(--h-white) !important;
   }
 
-  ytd-app:has(ytd-watch-flexy[theater]) .ytSearchboxComponentInputContainerIsFocused {
+  ytd-app.theater-active .ytSearchboxComponentInputContainerIsFocused {
     border-color: var(--h-accent) !important;
     box-shadow: 2px 2px 0 var(--h-accent) !important;
   }
 
   /* Search button — match border/shadow to input box in theatre mode */
-  ytd-app:has(ytd-watch-flexy[theater]) .ytSearchboxComponentSearchButton {
+  ytd-app.theater-active .ytSearchboxComponentSearchButton {
     border-color: var(--h-theater-border) !important;
     box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
   }
 
-  ytd-app:has(ytd-watch-flexy[theater]) .ytSearchboxComponentInputContainerIsFocused .ytSearchboxComponentSearchButton {
+  ytd-app.theater-active .ytSearchboxComponentInputContainerIsFocused .ytSearchboxComponentSearchButton {
     border-color: var(--h-accent) !important;
     box-shadow: 2px 2px 0 var(--h-accent) !important;
   }
 
   /* Create button — fix border and shadow in theatre mode */
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead #buttons ytd-button-renderer button,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead #buttons yt-button-shape button {
+  ytd-app.theater-active ytd-masthead #buttons ytd-button-renderer button,
+  ytd-app.theater-active ytd-masthead #buttons yt-button-shape button {
     border-color: var(--h-theater-border) !important;
     box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
   }
 
   /* Mic / voice button — theater surface color */
-  ytd-app:has(ytd-watch-flexy[theater]) #voice-search-button button,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead #voice-search-button .yt-spec-button-shape-next {
+  ytd-app.theater-active #voice-search-button button,
+  ytd-app.theater-active ytd-masthead #voice-search-button .yt-spec-button-shape-next {
     background-color: var(--h-theater-surface) !important;
     border-color: var(--h-theater-border) !important;
     box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
     color: var(--h-white) !important;
   }
 
-  ytd-app:has(ytd-watch-flexy[theater]) #voice-search-button button yt-icon svg *,
-  ytd-app:has(ytd-watch-flexy[theater]) #voice-search-button button yt-icon svg path {
+  ytd-app.theater-active #voice-search-button button yt-icon svg *,
+  ytd-app.theater-active #voice-search-button button yt-icon svg path {
     fill: var(--h-white) !important;
     color: var(--h-white) !important;
   }
@@ -1262,8 +890,8 @@ border: 2px solid var(--h-border) !important;
   ytd-watch-flexy[theater] ytd-watch-metadata #flexible-item-buttons .yt-spec-button-shape-next--tonal:hover,
   ytd-watch-flexy[theater] ytd-watch-metadata #flexible-item-buttons .yt-spec-button-shape-next--filled:hover,
   ytd-watch-flexy[theater] ytd-watch-metadata #actions yt-button-shape button:hover,
-      ytd-app:has(ytd-watch-flexy[theater]) #voice-search-button button:hover,
-  ytd-app:has(ytd-watch-flexy[theater]) ytd-masthead #voice-search-button .yt-spec-button-shape-next:hover {
+      ytd-app.theater-active #voice-search-button button:hover,
+  ytd-app.theater-active ytd-masthead #voice-search-button .yt-spec-button-shape-next:hover {
     background-color: var(--h-theater-hover) !important;
   }
 
