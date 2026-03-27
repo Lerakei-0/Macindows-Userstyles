@@ -1,0 +1,1108 @@
+/* ==UserStyle==
+@name         Macindows — X/Twitter Theme
+@description  Warm parchment palette · Bold black borders · Georgia serif · Teal accents.
+@namespace     Lerakei-0
+@version       1.0.0
+@author        Lerakei-0
+@license       MIT
+@preprocessor  default
+==/UserStyle== */
+
+@-moz-document domain("x.com"), domain("twitter.com") {
+
+  /* ═══════════════════════════════════════════════════════════
+     PALETTE VARIABLES
+  ═══════════════════════════════════════════════════════════ */
+  :root {
+    --h-parchment:     #fff9ec;
+    --h-parchment-alt: #f7f1e3;
+    --h-white:         #ffffff;
+    --h-border:        #000000;
+    --h-accent:        #6ab8b0; /*accent color can be changed in this variable, the hover and lighter colors are automated from this, default is #6ab8b0*/
+    --h-accent-hover:  color-mix(in srgb, var(--h-accent) 85%, black);
+    --h-accent-badge:    color-mix(in srgb, var(--h-accent) 35%, white);
+    --h-accent-badge-bd: color-mix(in srgb, var(--h-accent) 50%, white);
+    --h-text-dark:     #1a1410;
+    --h-text-mid:      #4a3f32;
+    --h-text-muted:    #8a7e70;
+    --h-shadow:        rgba(26,20,16,0.18);
+    --h-red:           #FE9E9E;
+    --x-colorpick: var(--accent-color);
+  }
+
+  body, .css-146c3p1, [data-testid="tweetText"], [data-testid="User-Name"] {
+    font-family: Georgia, 'Times New Roman', serif !important;
+  }
+
+  html, body, #react-root,
+  div[data-testid="primaryColumn"],
+  div[data-testid="sidebarColumn"],
+  main[role="main"] {
+    background-color: var(--h-parchment-alt) !important;
+  }
+
+  div[data-testid="primaryColumn"] {
+    border-right: 2px solid var(--h-border) !important;
+    border-left: none !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     LEFT NAV SIDEBAR
+  ═══════════════════════════════════════════════════════════ */
+  nav[aria-label="Primary"], header[role="banner"], div[data-testid="SideNav"] {
+    background-color: var(--h-parchment) !important;
+    border-right: 2px solid var(--h-border) !important;
+  }
+
+  nav[aria-label="Primary"] {
+    background-color: var(--h-parchment) !important;
+    border-right: 0px solid var(--h-border) !important;
+  }
+
+  nav[aria-label="Primary"] span, div[data-testid="SideNav"] span {
+    color: var(--h-text-dark) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  nav[aria-label="Primary"] [role="link"]:hover,
+  div[data-testid="SideNav"] [role="link"]:hover,
+  [data-testid="AppTabBar_More_Menu"]:hover,
+  nav[aria-label="Primary"] [role="button"]:hover {
+    background-color: var(--h-accent-badge) !important;
+    border-radius: 4px !important;
+  }
+
+  nav[aria-label="Primary"] [role="link"]:hover > div:first-child,
+  div[data-testid="SideNav"] [role="link"]:hover > div:first-child,
+  nav[aria-label="Primary"] [role="link"]:hover div[style*="background"],
+  div[data-testid="SideNav"] [role="link"]:hover div[style*="background"],
+  [data-testid="AppTabBar_More_Menu"]:hover > div:first-child,
+  nav[aria-label="Primary"] [role="button"]:hover > div:first-child {
+    background-color: transparent !important;
+  }
+
+  [data-testid="AppTabBar_More_Menu"]:hover > div,
+  [aria-label="More menu"]:hover > div {
+    background-color: transparent !important;
+  }
+
+  nav[aria-label="Primary"] [aria-current="page"],
+  div[data-testid="SideNav"] [aria-current="page"] {
+    color: var(--h-accent) !important;
+  }
+
+  a[data-testid="SideNav_NewTweet_Button"],
+  [data-testid="SideNav_NewTweet_Button"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--h-border) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  a[data-testid="SideNav_NewTweet_Button"]:hover,
+  [data-testid="SideNav_NewTweet_Button"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     PRIMARY COLUMN — FEED HEADER
+  ═══════════════════════════════════════════════════════════ */
+  div[data-testid="primaryColumn"] > div > div:first-child,
+  div[data-testid="TopNavBar"], 
+  div[data-testid="primaryColumn"] header{
+    background-color: var(--h-parchment-alt) !important;
+  }
+
+  [role="tablist"] {
+    background-color: var(--h-white) !important;
+    border-bottom: none !important;
+  }
+
+  /* Chat drawer tablist — transparent background */
+  [data-testid="dm-inbox-tabs"] [role="tablist"],
+  [data-testid="dm-inbox-tabs-list"] {
+    background-color: transparent !important;
+  }
+
+  /* Remove side gradients on chat drawer tabs */
+  [data-testid="dm-inbox-tabs-container"] .absolute.inset-y-0.left-0,
+  [data-testid="dm-inbox-tabs-container"] .absolute.inset-y-0.right-0 {
+    display: none !important;
+  }
+
+  [role="tab"] {
+    font-family: Georgia, serif !important;
+    color: var(--h-text-muted) !important;
+  }
+
+  [role="tab"][aria-selected="true"] {
+    color: var(--h-text-dark) !important;
+  }
+
+  nav.r-j5o65s.r-rull8r.r-qklmqi, .r-j5o65s.r-qklmqi {
+    border-bottom: none !important;
+  }
+
+  .r-109y4c4.r-1sw30gj {
+    display: none !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     TWEET CARDS
+  ═══════════════════════════════════════════════════════════ */
+  article[data-testid="tweet"] {
+    background-color: var(--h-parchment) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    margin: 6px 8px !important;
+    box-shadow: 3px 3px 0 rgba(26,20,16,0.18) !important;
+    transition: box-shadow 0.1s ease !important;
+  }
+
+  article[data-testid="tweet"]:hover {
+    background-color: var(--h-white) !important;
+    box-shadow: 4px 4px 0 rgba(26,20,16,0.28) !important;
+  }
+
+  [data-testid="tweetText"] {
+    color: var(--h-text-dark) !important;
+    font-family: Georgia, serif !important;
+    line-height: 1.6 !important;
+  }
+
+  [data-testid="User-Name"] span, [data-testid="User-Names"] span {
+    color: var(--h-text-dark) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  [data-testid="User-Name"] span[style*="color: rgb(113"],
+  [data-testid="User-Name"] div > span:last-child {
+    color: var(--h-text-muted) !important;
+  }
+
+  time, [data-testid="tweet"] a[href*="/status/"] > span {
+    color: var(--h-text-muted) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  [data-testid="reply"], [data-testid="retweet"], [data-testid="like"],
+  [data-testid="unlike"], [data-testid="bookmark"], [data-testid="share"] {
+    color: var(--h-text-muted) !important;
+  }
+
+  [data-testid="reply"]:hover, [data-testid="retweet"]:hover,
+  [data-testid="like"]:hover, [data-testid="bookmark"]:hover,
+  [data-testid="share"]:hover {
+    color: var(--h-accent) !important;
+  }
+
+  [data-testid="unlike"] { color: #c06060 !important; }
+  [data-testid="unretweet"] { color: var(--h-accent) !important; }
+
+  div[data-testid="cellInnerDiv"] {
+    border-bottom: 0px solid var(--h-accent-badge-bd) !important;
+  }
+  #cpftFocusedTweetActionBar .r-1dgieki {
+    border-top-color: var(--h-border) !important;
+}
+/* Post photos */
+
+  .r-1ets6dv {
+    border-radius: 0px !important;
+}
+  .r-1ets6dv.r-1phboty.r-rs99b7.r-1udh08x {
+      border-color: transparent !important;
+    }
+  [data-testid="tweetPhoto"] {
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0px !important;
+    overflow: visible !important;
+    }
+    
+    
+/* Quoted posts bordered box */
+  article[data-testid="tweet"] div[role="link"][tabindex="0"] {
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0px !important;
+    box-shadow: 3px 3px 0 rgba(26,20,16,0.18) !important;
+}
+/* Reply lines */
+
+  .r-1bimlpy {
+    background-color: var(--h-border) !important;
+}
+  /* ═══════════════════════════════════════════════════════════
+     COMPOSE TWEET BOX
+  ═══════════════════════════════════════════════════════════ */
+  div[data-testid="tweetTextarea_0"],
+  div[data-testid="tweetButtonInline"],
+  div[data-testid="toolBar"] {
+    background-color: var(--h-white) !important;
+  }
+
+  div[data-testid="tweetTextarea_0"] {
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  [data-testid="tweetButtonInline"] {
+    border-top: 1px solid var(--h-accent-badge-bd) !important;
+  }
+
+  [data-testid="tweetButton"],
+  [data-testid="tweetButtonInline"] [role="button"][data-testid],
+  button[data-testid="tweetButtonInline"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+  }
+
+  [data-testid="tweetButton"]:hover,
+  [data-testid="tweetButtonInline"] [role="button"][data-testid]:hover,
+  button[data-testid="tweetButtonInline"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  .r-14lw9ot {
+    background-color: var(--h-parchment-alt) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: 0px !important;
+  }
+
+  div[data-testid="toolBar"], div[data-testid="toolBar"] > div {
+    background-color: var(--h-parchment-alt) !important;
+  }
+
+  [data-testid="dual-phase-countdown-circle"] circle {
+    stroke: var(--h-accent) !important;
+  }
+
+  [data-testid="dual-phase-countdown-circle"] circle[stroke="#EFF3F4"] {
+    stroke: var(--h-white) !important;
+  }
+
+  div[data-testid="toolBar"] button svg,
+  div[data-testid="toolBar"] button .r-vkub15 {
+    color: var(--h-accent) !important;
+    fill: var(--h-accent) !important;
+  }
+
+  /* Save button */
+  [data-testid="confirmationSheetConfirm"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+  }
+
+  [data-testid="confirmationSheetConfirm"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  [data-testid="confirmationSheetConfirm"] span {
+    color: var(--h-white) !important;
+  }
+
+  /* Discard button — red */
+  [data-testid="confirmationSheetCancel"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-red) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-red) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-red) !important;
+  }
+
+  [data-testid="confirmationSheetCancel"]:hover {
+    background-color: var(--h-parchment) !important;
+  }
+
+  [data-testid="confirmationSheetCancel"] span {
+    color: var(--h-border) !important;
+  }
+
+  /* Cancel button */
+  [data-testid="confirmationSheetCancel"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+  }
+
+  [data-testid="confirmationSheetCancel"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  /* Discard dialog container */
+  [data-testid="confirmationSheetDialog"] {
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 3px 3px 0 rgba(26,20,16,0.28) !important;
+  }
+
+  /*Imported images in new post  */
+div[aria-label="Media"].r-1867qdf {
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0px !important;
+    }
+    
+
+    
+
+  /* ═══════════════════════════════════════════════════════════
+     SEARCH
+  ═══════════════════════════════════════════════════════════ */
+  form[aria-label="Search"] .r-b5kvu3,
+  form[aria-label="Search"] .r-d045u9 { border: none; }
+
+  form[aria-label="Search"] .r-b5kvu3,
+  form[aria-label="Search"] .r-d045u9,
+  form[aria-label="Search"] .r-eqz5dr {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-grow: 1 !important;
+    transform: none !important;
+  }
+
+  form[aria-label="Search"] { width: 100% !important; max-width: 100% !important; }
+  form[aria-label="Search"] > div { width: 100% !important; max-width: 100% !important; flex-shrink: 0 !important; }
+  form[aria-label="Search"] .r-sdzlij.r-eqz5dr.r-b5kvu3 { width: 100% !important; max-width: 100% !important; }
+  form[aria-label="Search"] .r-42olwf.r-1phboty.r-rs99b7 { width: 348px !important; }
+
+  form[aria-label="Search"], form[aria-label="Search"] > div {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  form[aria-label="Search"] .r-1ets6dv { border-color: transparent !important; }
+  form[aria-label="Search"] .r-sdzlij { border-radius: 4px !important; }
+
+  [data-testid="ScrollSnap-List"] { background-color: var(--h-parchment-alt) !important; }
+
+  [role="progressbar"] + div, [role="progressbar"] ~ div {
+    border-bottom-color: var(--h-parchment-alt) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     RIGHT SIDEBAR
+  ═══════════════════════════════════════════════════════════ */
+  div[data-testid="sidebarColumn"] { background-color: var(--h-parchment-alt) !important; }
+
+  div[data-testid="SearchBox_Search_Input_label"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--h-border) !important;
+    outline: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  div[data-testid="SearchBox_Search_Input_label"]:focus-within {
+    border-color: var(--h-accent) !important;
+    box-shadow: 3px 3px 0 var(--h-accent) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  input[data-testid="SearchBox_Search_Input"] {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  [data-testid="typeaheadResult"],
+  [data-testid="searchHistory"],
+  [data-testid="typeaheadRecentSearchesItem"] {
+    background-color: var(--h-white) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--h-accent-badge-bd) !important;
+    box-shadow: none !important;
+  }
+
+  [data-testid="typeaheadResult"]:hover,
+  [data-testid="searchHistory"]:hover,
+  [data-testid="typeaheadRecentSearchesItem"]:hover {
+    background-color: var(--h-accent-badge) !important;
+  }
+
+  [data-testid="searchHistory"] [role="button"],
+  [data-testid="typeaheadResult"] [role="button"] {
+    color: var(--h-accent) !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  [data-testid="typeaheadDropdown"],
+  div[data-testid="SearchBox_Search_Input_label"] + div,
+  div[id^="typeahead"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 3px 3px 0 var(--h-shadow) !important;
+  }
+
+  [data-testid="SearchBox_Search_Input_label"][style],
+  [data-testid="SearchBox_Search_Input_label"] > div[style],
+  [data-testid="SearchBox_Search_Input_label"] > div > div[style] {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: var(--h-accent) !important;
+  }
+
+  [style*="border-color: rgb(249, 24, 128)"],
+  [style*="border-color: rgb(29, 155, 240)"] { border-color: var(--h-accent) !important; }
+
+  [style*="background-color: rgb(249, 24, 128)"]:not([data-testid="videoPlayer"] *):not([role="slider"]):not(video),
+  [style*="background-color: rgb(29, 155, 240)"]:not([data-testid="videoPlayer"] *):not([role="slider"]):not(video) { background-color: var(--h-teal) !important; }
+
+  [style*="color: rgb(249, 24, 128)"],
+  [style*="color: rgb(29, 155, 240)"] { color: var(--h-accent) !important; }
+
+  [style*="box-shadow"][style*="249, 24, 128"],
+  [style*="box-shadow"][style*="29, 155, 240"],
+  [style*="box-shadow"][style*="rgb(249"],
+  [style*="box-shadow"][style*="rgb(29, 155"] { box-shadow: none !important; }
+
+  div[data-testid="sidebarColumn"] > div > div > div > section,
+  div[data-testid="sidebarColumn"] > div > div > div > aside,
+  div[data-testid="sidebarColumn"] div.r-14lw9ot.r-jxzhtn.r-1phboty.r-rs99b7.r-1ifxtd0.r-1udh08x {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    margin-bottom: 8px !important;
+    box-shadow: 3px 3px 0 var(--h-shadow) !important;
+  }
+
+  div[data-testid="sidebarColumn"] h2 {
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-text-dark) !important;
+    border-bottom: 2px solid var(--h-border) !important;
+    padding-bottom: 6px !important;
+    background-color: var(--h-white) !important;
+  }
+
+  [data-testid="trend"] {
+    border: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--h-accent-badge-bd) !important;
+    margin-bottom: 0 !important;
+  }
+
+  [data-testid="trend"]:hover { background-color: var(--h-accent-badge) !important; }
+  [data-testid="trend"] span { font-family: Georgia, serif !important; color: var(--h-text-dark) !important; }
+
+  [data-testid="UserCell"] { border: none !important; box-shadow: none !important; }
+  [data-testid="UserCell"]:hover { background-color: var(--h-accent-badge) !important; }
+
+  [data-testid="UserCell"] [role="button"]:not([aria-label="Remove"]),
+  [aria-label*="Follow"][role="button"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+  }
+
+  [data-testid="UserCell"] [role="button"]:not([aria-label="Remove"]) span,
+  [aria-label*="Follow"][role="button"] span {
+    color: var(--h-white) !important;
+  }
+
+  [aria-label*="Follow"][role="button"]:hover,
+  [data-testid="UserCell"] [role="button"]:not([aria-label="Remove"]):hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     LINKS & HASHTAGS
+  ═══════════════════════════════════════════════════════════ */
+  [data-testid="tweetText"] a,
+  [data-testid="tweetText"] span[style*="color: rgb(27, 149, 224)"],
+  a[role="link"][href*="/hashtag/"] {
+    color: var(--h-accent) !important;
+    text-decoration: none !important;
+  }
+
+  [data-testid="tweetText"] a:hover {
+    text-decoration: underline !important;
+    color: var(--h-accent-hover) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     MODALS & POPUPS
+  ═══════════════════════════════════════════════════════════ */
+  [role="dialog"]:not([aria-describedby="conversation-controls-details"]),
+  [data-testid="Dropdown"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0 var(--h-shadow) !important;
+  }
+
+  [data-testid="Dropdown"] [role="menuitem"],
+  [role="dialog"] [role="menuitem"] {
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  [data-testid="Dropdown"] [role="menuitem"]:hover,
+  [role="dialog"] [role="menuitem"]:hover { background-color: var(--h-accent-badge) !important; }
+
+  [data-testid="HoverCard"]:has([aria-describedby="conversation-controls-details"]) {
+    border: 2px solid var(--h-border) !important;
+    box-shadow: 4px 4px 0 var(--h-shadow) !important;
+  }
+
+  [aria-describedby="conversation-controls-details"] {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  [aria-describedby="conversation-controls-details"] > * { border-top: none !important; }
+
+  [data-testid="HoverCard"] {
+    border: 2px solid var(--h-border) !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    box-shadow: 3px 3px 0 var(--h-shadow) !important;
+    background-color: var(--h-white) !important;
+  }
+
+  [data-testid="HoverCard"] > div,
+  [data-testid="HoverCard"] > div > div,
+  [data-testid="HoverCard"] > div > div > div,
+  [data-testid="HoverCard"] [role="dialog"] {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-testid="UserProfileHeader_Items"],
+  [data-testid="UserName"],
+  [data-testid="UserDescription"] {
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  [data-testid="UserDescription"] { color: var(--h-text-mid) !important; line-height: 1.6 !important; }
+
+  [href*="/followers"] span, [href*="/following"] span, [href*="/verified_followers"] span {
+    font-family: Georgia, serif !important;
+    color: var(--h-text-muted) !important
+  }
+
+  [href*="/followers"] span:last-child, [href*="/following"] span:last-child {
+    color: var(--h-text-muted) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     NOTIFICATIONS
+  ═══════════════════════════════════════════════════════════ */
+/*notifications badge*/ 
+    [data-testid="badge"] {
+    background-color: var(--h-accent) !important;
+    color: var(--h-white) !important;
+    font-family: Georgia, serif !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    font-weight: 700 !important;
+  }
+    
+/*notification images*/
+  [data-testid="notification"] .r-1q9bdsx.r-sga3zk {
+    border-radius: 0px !important;
+    border: 2px solid var(--h-border) !important;
+    box-shadow: 3px 3px 0 var(--h-shadow) !important;
+
+}
+
+  /* ═══════════════════════════════════════════════════════════
+     NEW POSTS TOAST BUTTON
+  ═══════════════════════════════════════════════════════════ */
+  .r-4nw3r4 {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  .r-4nw3r4[role="button"]:hover,
+  .r-4nw3r4[role="button"]:focus,
+  .r-4nw3r4[role="button"]:active,
+  .r-4nw3r4.r-o7ynqc[role="button"]:hover {
+    background-color: var(--h-accent-hover) !important;
+    box-shadow: 3px 3px 0 var(--h-border) !important;
+  }
+
+  /* Kill any inline style overrides on hover for the toast */
+  [style*="background-color: rgb(249, 24, 128)"].r-4nw3r4,
+  [style*="background-color: rgb(249, 24, 128)"].r-4nw3r4:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  /* X swaps .r-4nw3r4 → .r-1r4f3zc on hover — override that too */
+  .r-1r4f3zc {
+    background-color: var(--h-accent-hover) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border), rgba(101, 119, 134, 0.2) 0px 0px 8px, rgba(101, 119, 134, 0.25) 0px 1px 3px 1px !important;
+    font-weight: 700 !important;
+    color: var(--h-white) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     SCROLLBAR
+  ═══════════════════════════════════════════════════════════ */
+  * { scrollbar-width: thin !important; scrollbar-color: var(--h-accent) var(--h-parchment) !important; }
+  *::-webkit-scrollbar { width: 6px !important; }
+  *::-webkit-scrollbar-track { background: var(--h-parchment) !important; }
+  *::-webkit-scrollbar-thumb { background-color: var(--h-accent) !important; border: 1px solid var(--h-border) !important; }
+
+  /* ═══════════════════════════════════════════════════════════
+     MISC
+  ═══════════════════════════════════════════════════════════ */
+  [data-testid="subscriberOnlyBanner"], [data-testid="UpgradeCard"] { display: none !important; }
+  [role="progressbar"] { display: none !important; }
+
+  /* ═══════════════════════════════════════════════════════════
+     PROFILE PAGE — AVATAR, COVER BORDER & ACTION BUTTONS
+  ═══════════════════════════════════════════════════════════ */
+  [data-testid="UserProfileHeader_Items"] .r-3pj75a.r-ttdzmv,
+  [data-testid="profileHeader"] .r-3pj75a.r-ttdzmv {
+    border-top: 2px solid var(--h-border) !important;
+  }
+
+  .r-1pi2tsx.r-13qzuu { background-color: var(--h-border) !important; }
+
+  [data-testid^="UserAvatar-Container"],
+  .r-1wbh5a2.r-dnmrzs,
+  ul[role="list"].r-mabqd8,
+  ul[role="list"].r-1udh08x,
+  .r-6gpygo.r-1f3rwsf,
+  .r-1iusvr4.r-18u37iz.r-16y2uox {
+    overflow: visible !important;
+  }
+
+  [data-testid^="UserAvatar-Container"] .r-sdzlij { border-radius: 8px !important; }
+
+  [data-testid^="UserAvatar-Container"] .r-sdzlij.r-45ll9u:not(.r-633pao),
+  [data-testid^="UserAvatar-Container"] .r-sdzlij.r-5f1w11.r-8jfcpp {
+    border-radius: 0px !important;
+  }
+
+  [data-testid^="UserAvatar-Container"] div[style*="background-color: rgb(255, 255, 255)"],
+  [data-testid^="Tweet-User-Avatar"] div[style*="background-color: rgb(255, 255, 255)"] {
+    background-color: var(--h-border) !important;
+    border-radius: 0px !important;
+  }
+
+  [data-testid^="UserAvatar-Container"] .r-1pi2tsx.r-13qzuu,
+  [data-testid^="Tweet-User-Avatar"] .r-1pi2tsx.r-13qzuu {
+    background-color: var(--h-border) !important;
+    border-radius: 0px !important;
+  }
+
+  .r-sdzlij.r-1udh08x.r-633pao.r-45ll9u { border-radius: 0px !important; }
+  .r-1pi2tsx.r-13qzuu { border-radius: 0px !important; }
+  .r-12181gd.r-1pi2tsx { outline: 2px solid var(--h-border) !important; border-radius: 0px !important; }
+
+  [data-testid^="UserAvatar-Container"] .r-sdzlij.r-1udh08x.r-45ll9u:not(.r-633pao) {
+    border-radius: 0px !important;
+    outline: 2px solid var(--h-border) !important;
+  }
+
+  [data-testid="userActions"], [data-testid="sendDMFromProfile"],
+  [data-testid="editProfileButton"], button[style*="border-color: rgb(207, 217, 222)"] {
+    background-color: var(--h-parchment) !important;
+    border-color: var(--h-border) !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+  }
+
+  [data-testid="userActions"]:hover, [data-testid="sendDMFromProfile"]:hover,
+  [data-testid="editProfileButton"]:hover, button[style*="border-color: rgb(207, 217, 222)"]:hover {
+    background-color: var(--h-white) !important;
+  }
+
+  /* Remove teal styling from video play buttons */
+  [data-testid="videoPlayer"] [role="button"],
+  [data-testid="videoComponent"] [role="button"],
+  button[aria-label^="Play Video"],
+  button[aria-label^="Play,"] {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: inherit !important;
+  }
+  [data-testid="placementTracking"] [role="button"]:not([aria-label="Play"]):not([aria-label^="Play Video"]):not([aria-label="Pause"]):not([aria-label="Mute"]):not([aria-label="Unmute"]):not([aria-label="Seek slider"]):not([aria-label="Full screen"]):not([aria-label="Exit full screen"]):not([aria-label="Settings"]):not([aria-label="Video Settings"]):not([aria-label="Enable high quality video"]):not([data-testid="scrubber"]):not([role="slider"]):not([data-testid="captions"]),
+  [data-testid="profile-unfollow-button"],
+  [data-testid="profile-follow-button"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    color: var(--h-white) !important;
+  }
+
+  [data-testid="placementTracking"] [role="button"]:not([aria-label="Play"]):not([aria-label^="Play Video"]):not([aria-label="Pause"]):not([aria-label="Mute"]):not([aria-label="Unmute"]):not([aria-label="Full screen"]):not([aria-label="Exit full screen"]):not([aria-label="Settings"]):not([aria-label="Video Settings"]):not([role="slider"]) span,
+  [data-testid="profile-unfollow-button"] span,
+  [data-testid="profile-follow-button"] span,
+  [data-testid="TopNavBar"] [data-testid="placementTracking"] [role="button"] span,
+  [data-testid="TopNavBar"] [data-testid="profile-unfollow-button"] span,
+  [data-testid="TopNavBar"] [data-testid="profile-follow-button"] span {
+    color: var(--h-white) !important;
+  }
+
+  [data-testid="placementTracking"] [role="button"]:not([aria-label="Play"]):not([aria-label^="Play Video"]):not([aria-label="Pause"]):not([aria-label="Mute"]):not([aria-label="Unmute"]):not([aria-label="Full screen"]):not([aria-label="Exit full screen"]):not([aria-label="Settings"]):not([aria-label="Video Settings"]):not([role="slider"]):not([data-testid="captions"]):hover,
+  [data-testid="profile-unfollow-button"]:hover,
+  [data-testid="profile-follow-button"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     PROFILE / TWEET DETAIL HEADER BAR
+  ═══════════════════════════════════════════════════════════ */
+  [data-testid="TopNavBar"], [data-testid="TopNavBar"] > div,
+  [data-testid="TopNavBar"] > div > div,
+  div[data-testid="primaryColumn"] header,
+  div[data-testid="primaryColumn"] header > div,
+  div[data-testid="primaryColumn"] > div > div:first-child > div:first-child {
+    background-color: var(--h-parchment-alt) !important;
+    border-bottom: 2px solid var(--h-border) !important;
+  }
+
+  [data-testid="TopNavBar"] span, [data-testid="TopNavBar"] div {
+    color: var(--h-text-dark) !important;
+    font-family: Georgia, serif !important;
+  }
+
+  /* Don't let the TopNavBar color rule bleed into follow buttons */
+  [data-testid="TopNavBar"] [data-testid="placementTracking"] span,
+  [data-testid="TopNavBar"] [data-testid="profile-unfollow-button"] span,
+  [data-testid="TopNavBar"] [data-testid="profile-follow-button"] span {
+    color: var(--h-white) !important;
+  }
+
+  /* Sticky TopNavBar follow button — match profile button */
+  [data-testid="TopNavBar"] [data-testid="placementTracking"] [role="button"],
+  [data-testid="TopNavBar"] [data-testid="profile-unfollow-button"],
+  [data-testid="TopNavBar"] [data-testid="profile-follow-button"],
+  [data-testid="TopNavBar"] [role="button"][style*="background-color: rgb(15, 20, 25)"],
+  [data-testid="TopNavBar"] [role="button"][style*="background-color: rgb(0, 0, 0)"],
+  [data-testid="TopNavBar"] div > [role="button"]:not([aria-label]),
+  button[aria-label^="Follow"][role="button"],
+  button[aria-label^="Unfollow"][role="button"],
+  [data-testid$="-follow"],
+  [data-testid$="-unfollow"] {
+    background-color: var(--h-accent) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    color: var(--h-white) !important;
+    font-family: Georgia, serif !important;
+    font-weight: 700 !important;
+  }
+
+  [data-testid="TopNavBar"] div > [role="button"]:not([aria-label]) span,
+  button[aria-label^="Follow"][role="button"] span,
+  button[aria-label^="Unfollow"][role="button"] span,
+  [data-testid$="-follow"] span,
+  [data-testid$="-unfollow"] span {
+    color: var(--h-white) !important;
+  }
+
+  button[aria-label^="Follow"][role="button"]:hover,
+  button[aria-label^="Unfollow"][role="button"]:hover,
+  [data-testid$="-follow"]:hover,
+  [data-testid$="-unfollow"]:hover {
+    background-color: var(--h-accent-hover) !important;
+  }
+
+  [data-testid="TopNavBar"] [style*="background-color"],
+  [data-testid="TopNavBar"] div[style*="rgba(255"] {
+    background-color: var(--h-parchment-alt) !important;
+  }
+
+  [data-testid="app-bar-back"], [data-testid="app-bar-back"] .r-sdzlij,
+  [data-testid="TopNavBar"] button .r-sdzlij,
+  [data-testid="TopNavBar"] button, button[aria-label="Search"] {
+    border-radius: 4px !important;
+  }
+
+  [data-testid="SideNav_AccountSwitcher_Button"] {
+    background-color: var(--h-parchment) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    width: 100% !important;
+  }
+
+  [data-testid="SideNav_AccountSwitcher_Button"]:hover { background-color: var(--h-white) !important; }
+  .r-e7q0ms { width: 100% !important; }
+
+  /* ═══════════════════════════════════════════════════════════
+     FLOATING CHAT & GROK BUTTONS
+  ═══════════════════════════════════════════════════════════ */
+  [data-testid="dm-inbox-header-main"] {
+    border-bottom: 2px solid var(--h-border) !important;
+}
+  [data-testid="dm-inbox-header"] > div.px-4.py-1.select-none {
+    border-bottom: 0px solid var(--h-border) !important;
+}
+  /* DM search bar — normal state */
+  [data-testid="dm-inbox-panel"] div[class*="border-e"] {
+    border-inline-end: none !important;
+  }
+
+  [data-testid="dm-search-bar"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--h-border) !important;
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  [data-testid="dm-search-bar"] input {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-family: Georgia, serif !important;
+    color: var(--h-text-dark) !important;
+  }
+
+  /* DM search expanded state — style the rounded-full wrapper with teal */
+  [data-testid="dm-inbox-panel"] div[class*="border-gray-50"]:focus-within,
+  [data-testid="dm-inbox-panel"] div[class*="border-gray-200"]:focus-within {
+    border: 2px solid var(--h-accent) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--h-accent) !important;
+    background-color: var(--h-white) !important;
+    outline: none !important;
+  }
+
+  /* Kill the inner input's own focus ring */
+  [data-testid="dm-inbox-panel"] div[class*="border-gray-50"] input:focus,
+  [data-testid="dm-inbox-panel"] div[class*="border-gray-200"] input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Selected tab in chat drawer */
+  [data-testid="dm-main-container"] [role="tab"][aria-selected="true"],
+  [data-testid="dm-inbox-tab-all"][data-state="active"],
+  [data-testid="dm-inbox-tab-unread"][data-state="active"],
+  [data-testid="dm-inbox-tab-oneonone"][data-state="active"],
+  [data-testid="dm-inbox-tab-groups"][data-state="active"],
+  [data-testid="dm-inbox-tab-requests"][data-state="active"] {
+    background-color: var(--h-accent) !important;
+    color: var(--h-white) !important;
+    border: 2px solid var(--h-border)!important;
+    box-shadow: none !important;
+  }
+  [data-testid="dm-inbox-tabs-list"] [role="tab"][data-state="inactive"] {
+     border: 2px solid var(--h-border)!important;
+      
+  }
+  [data-testid="dm-inbox-tabs-list"] [role="tab"][data-state="inactive"]:hover {
+    background-color: var(--h-parchment) !important;
+}
+      
+    [data-testid="dm-inbox-tabs-list"] {
+     gap: 5px !important; 
+}
+
+  /* Chat bubble column — white background */
+  [data-testid="dm-conversation-panel"],
+  [data-testid="dm-conversation-content"],
+  [data-testid="dm-message-list-container"],
+  [data-testid="dm-message-list"] {
+    background-color: var(--h-white) !important;
+  }
+
+  /* DM list item hover — light teal */
+  div[class*="hover\:bg-gray-50"]:hover {
+    background-color: var(--h-accent-badge) !important;
+  }
+
+  /* Teal separator between DM list items */
+  [data-testid="dm-conversation-item"] div[class*="border-gray-50"],
+  div[class*="border-b"][class*="border-gray-50"] {
+    border-color: var(--h-accent-badge-bd) !important;
+  }
+
+  /* Selected DM item — darker teal */
+  [data-testid="dm-conversation-item"][data-selected="true"] div[class*="bg-gray-0"],
+  [data-testid="dm-conversation-item"][data-selected="true"] div[class*="cursor-pointer"] {
+    background-color: var(--h-accent-badge-bd) !important;
+  }
+
+  div[class*="bg-gray-0"][class*="cursor-pointer"] {
+    background-color: var(--h-accent-badge-bd) !important;
+  }
+
+  /* Black border between DM list and chat column */
+  [data-testid="dm-inbox-panel"] {
+    border-right: 2px solid var(--h-border) !important;
+  }
+
+  [data-testid="chat-drawer-main"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    overflow: hidden !important;
+  }
+
+  [data-testid="chat-drawer-main"] > * {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  [data-testid="chat-drawer-main"]:hover {
+    background-color: var(--h-white) !important;
+  }
+
+  [data-testid="GrokDrawerHeader"] .r-11mg6pl {
+    background-color: var(--h-parchment) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+  }
+
+  [data-testid="GrokDrawerHeader"]:hover .r-11mg6pl {
+    background-color: var(--h-white) !important;
+  }
+
+  [data-testid="chat-drawer-main"]:hover,
+  [data-testid="GrokDrawerHeader"]:hover {
+    background-color: var(--h-white) !important;
+  }
+
+  [data-testid^="news_sidebar_article"] {
+    border: none !important;
+    border-bottom: 1px solid var(--h-accent-badge-bd) !important;
+    box-shadow: none !important;
+  }
+
+  [data-testid^="news_sidebar_article"]:hover { background-color: var(--h-accent-badge) !important; }
+  .r-6026j { background-color: var(--h-parchment-alt) !important; }
+
+  /* Grok panel — only the expanded panel, not the button container */
+  [data-testid="GrokDrawer"] > div[style*="min-height"] {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--h-border) !important;
+  }
+
+  [data-testid="GrokDrawer"] > div[style*="min-height"] .r-14lw9ot {
+    background-color: var(--h-white) !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Grok panel header — white */
+  [data-testid="GrokDrawer"] > div[style*="min-height"] [data-testid="GrokDrawerHeader"] {
+    background-color: var(--h-white) !important;
+    border-bottom: none !important;
+  }
+
+  [data-testid="GrokDrawerHeader"] .r-6026j.r-st84sj,
+  [data-testid="GrokDrawerHeader"] .r-j3xhw6 {
+    background-color: transparent !important;
+  }
+
+  .r-12jitg0.r-1ce3o0f {
+    background-color: var(--h-white) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0 var(--h-border) !important;
+    width: 59px !important;
+    min-width: 59px !important;
+    max-width: 59px !important;
+    height: 59px !important;
+    min-height: 59px !important;
+    max-height: 59px !important;
+    box-sizing: border-box !important;
+  }
+
+  .r-12jitg0.r-1ce3o0f:hover {
+    background-color: var(--h-parchment) !important;
+  }
+
+  /* DM button size handled naturally */
+
+  /* ═══════════════════════════════════════════════════════════
+     SHOW MORE BUTTONS
+  ═══════════════════════════════════════════════════════════ */
+
+  div[data-testid="sidebarColumn"] a[role="link"][href*="connect_people"],
+  div[data-testid="sidebarColumn"] a[role="link"][href*="i/connect_people"],
+  div[data-testid="sidebarColumn"] a[role="link"][href*="show_more"],
+  div[data-testid="sidebarColumn"] a[role="link"][href*="/explore/tabs/"],
+  div[data-testid="primaryColumn"] a[role="link"][href*="/explore/tabs/"],
+  div[data-testid="primaryColumn"] a[href*="i/connect_people"] {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  div[data-testid="sidebarColumn"] a[role="link"][href*="connect_people"] div,
+  div[data-testid="sidebarColumn"] a[role="link"][href*="i/connect_people"] div,
+  div[data-testid="sidebarColumn"] a[role="link"][href*="show_more"] div,
+  div[data-testid="sidebarColumn"] a[role="link"][href*="/explore/tabs/"] div,
+  div[data-testid="primaryColumn"] a[role="link"][href*="/explore/tabs/"] div,
+  div[data-testid="primaryColumn"] a[href*="i/connect_people"] div {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+}
