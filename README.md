@@ -8,4 +8,4 @@ Needs a userscript injection with tampermonkey (or equivalent), the userscript i
 
 # X(Formerly Twitter)
 
-SOON
+![X/Twitter Macindows Screenshot](https://github.com/Lerakei-0/Macindows-Userstyles/blob/main/X(formerly%20Twitter)/Screenshot.png?raw=true)
