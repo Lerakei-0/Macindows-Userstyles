@@ -18,7 +18,7 @@
     --h-parchment-alt: #f7f1e3;
     --h-white:         #ffffff;
     --h-border:        #000000;
-    --h-accent:        #6ab8b0; /*accent color can be changed in this variable, the hover and lighter colors are automated from this, default is #6ab8b0*/
+    --h-accent:        #6ab8b0;
     --h-accent-hover:  color-mix(in srgb, var(--h-accent) 85%, black);
     --h-accent-light:  color-mix(in srgb, var(--h-accent) 35%, white);
     --h-text-dark:     #1a1410;
@@ -725,7 +725,18 @@ border: 2px solid var(--h-border) !important;
     border-radius: 0px;
     border: 2px solid var(--h-border) !important;
     box-shadow: 2px 2px 0 var(--h-shadow) !important;
+      background-color: var(--h-parchment) !important;
   }
+    
+    
+  .ytVideoMetadataCarouselViewModelHost{
+              background-color: var(--h-parchment) !important;
+    border: 2px solid var(--h-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 2px 2px 0 var(--h-shadow) !important;
+    color: var(--h-text-dark) !important;
+    font-family: Georgia, serif !important;
+    }
     #live-chat-banner {
   background: linear-gradient(var(--h-parchment-alt), rgba(0, 0, 0, 0)) !important;
 }
@@ -1234,6 +1245,12 @@ border: 2px solid var(--h-border) !important;
     box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
  
   }
+  ytd-watch-flexy[theater] .ytVideoMetadataCarouselViewModelHost{
+    background-color: var(--h-theater-surface) !important;
+    border-color: var(--h-theater-border) !important;
+    color: var(--h-white) !important;
+    box-shadow: 2px 2px 0 var(--h-theater-shadow) !important;
+    }
  
   ytd-watch-flexy[theater] ytd-watch-metadata #description-inner,
   ytd-watch-flexy[theater] ytd-text-inline-expander {
@@ -1391,4 +1408,115 @@ border: 2px solid var(--h-border) !important;
     box-shadow: none !important;
   }
  
+}
+@-moz-document url-prefix("https://www.youtube.com/live_chat"),
+              url-prefix("https://www.youtube.com/live_chat_replay") {
+ 
+  /* ═══════════════════════════════════════════════════════════
+     LIVE CHAT — THEATER MODE
+     The userscript adds .theater-active to the iframe's body
+     when theater mode is on in the parent page.
+  ═══════════════════════════════════════════════════════════ */
+ 
+  /* Override YouTube's own CSS variables inside the iframe */
+  :root {
+    --yt-live-chat-primary-text-color:         #1a1410 !important;
+    --yt-live-chat-secondary-text-color:       #4a3f32 !important;
+    --yt-live-chat-background-color:           #f7f1e3 !important;
+    --yt-live-chat-header-background-color:    #fff9ec !important;
+    --yt-live-chat-action-panel-background-color: #fff9ec !important;
+    --yt-live-chat-message-highlight-background-color: #f0e8d5 !important;
+    --yt-spec-text-primary:                    #1a1410 !important;
+    --yt-spec-text-secondary:                  #4a3f32 !important;
+    --yt-spec-base-background:                 #f7f1e3 !important;
+    --yt-spec-raised-background:               #fff9ec !important;
+      
+  /* Theatre mode dark palette */
+    --h-theater-bg:          #121212;
+    --h-theater-bg-masthead: #121212;
+    --h-theater-surface:     #191919;
+    --h-theater-border:      #fff;
+    --h-theater-shadow:      #373737;
+    --h-theater-masthead-border: #fff;
+    --h-theater-hover:       #303030;
+  
+  }
+ 
+ 
+  /* Theater mode — override variables to dark */
+  body.theater-active {
+    --yt-live-chat-primary-text-color:         #ffffff !important;
+    --yt-live-chat-secondary-text-color:       #aaaaaa !important;
+    --yt-live-chat-background-color:           #121212 !important;
+    --yt-live-chat-header-background-color:    #191919 !important;
+    --yt-live-chat-action-panel-background-color: #191919 !important;
+    --yt-live-chat-message-highlight-background-color: #303030 !important;
+    --yt-spec-text-primary:                    #ffffff !important;
+    --yt-spec-text-secondary:                  #aaaaaa !important;
+    --yt-spec-base-background:                 #121212 !important;
+    --yt-spec-raised-background:               #191919 !important;
+  }
+ 
+  /* Theater mode — dark */
+  body.theater-active,
+  body.theater-active yt-live-chat-renderer,
+  body.theater-active #chat-messages,
+  body.theater-active #contents {
+    background-color: var(--h-theater-surface) !important;
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active yt-live-chat-item-list-renderer,
+  body.theater-active #item-list {
+    background-color: var(--h-theater-surface) !important;
+  }
+ 
+  body.theater-active yt-live-chat-text-message-renderer,
+  body.theater-active yt-live-chat-paid-message-renderer,
+  body.theater-active yt-live-chat-membership-item-renderer {
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active #author-name {
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active yt-live-chat-header-renderer,
+  body.theater-active #header {
+    background-color: var(--h-theater-surface) !important;
+    border-bottom: 2px solid #ffffff !important;
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active yt-live-chat-header-renderer *,
+  body.theater-active #header * {
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active #ticker {
+    background-color: var(--h-theater-surface) !important;
+  }
+ 
+  body.theater-active yt-live-chat-message-input-renderer,
+  body.theater-active #message-input-area {
+    background-color: var(--h-theater-surface) !important;
+    border-top: 2px solid #ffffff !important;
+    color: #ffffff !important;
+  }
+ 
+  body.theater-active yt-live-chat-message-input-renderer *,
+  body.theater-active #message-input-area * {
+    color: #ffffff !important;
+  }
+  body.theater-active #live-chat-banner {
+    background: linear-gradient(var(--h-theater-surface), rgba(0, 0, 0, 0)) !important;
+}
+  body.theater-active tp-yt-iron-dropdown.tp-yt-paper-menu-button{
+    background-color: var(--h-theater-surface) !important;
+
+}
+  #card.yt-live-chat-viewer-engagement-message-renderer{
+    background-color: var(--h-theater-bg) !important;
+
+                  }
 }
