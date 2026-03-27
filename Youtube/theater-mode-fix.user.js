@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Macindows — YouTube Theater Fix
 // @namespace    Lerakei-0
-// @version      1.0.0
+// @version      1.0.1
 // @description  Removes theater-mode dark masthead when navigating away from watch page
 // @match        https://www.youtube.com/*
 // @run-at       document-start
@@ -10,26 +10,55 @@
 (function () {
   'use strict';
 
-  function fixMasthead() {
-    const isWatchPage = location.pathname === '/watch';
-    const masthead = document.querySelector('#masthead, ytd-masthead');
-    if (!masthead) return;
+  const watchObserver = new MutationObserver(updateTheaterClass);
+  let watchObserverAttached = false;
 
-    if (!isWatchPage) {
-      // Force parchment background directly when not on watch page
-      masthead.style.setProperty('background-color', '#fff9ec', 'important');
-      masthead.style.setProperty('border-bottom-color', '#000000', 'important');
-    } else {
-      // Let CSS take over on watch page
-      masthead.style.removeProperty('background-color');
-      masthead.style.removeProperty('border-bottom-color');
+  function updateTheaterClass() {
+    const app = document.querySelector('ytd-app');
+    if (!app) return;
+
+    const onWatchPage = location.pathname === '/watch';
+    const theaterActive = onWatchPage && !!document.querySelector('ytd-watch-flexy[theater]');
+
+    app.classList.toggle('theater-active', theaterActive);
+  }
+
+  function attachWatchObserver() {
+    const watchFlexy = document.querySelector('ytd-watch-flexy');
+    if (watchFlexy && !watchObserverAttached) {
+      watchObserver.observe(watchFlexy, { attributes: true, attributeFilter: ['theater'] });
+      watchObserverAttached = true;
     }
   }
 
-  // YouTube is a SPA — hook into navigation events
-  document.addEventListener('yt-navigate-finish', fixMasthead);
-  document.addEventListener('yt-page-data-updated', fixMasthead);
+  // Re-run attach + update on every SPA navigation
+  // ytd-watch-flexy may be freshly inserted or re-used each time
+  document.addEventListener('yt-navigate-finish', () => {
+    watchObserverAttached = false;
+    watchObserver.disconnect();
+    attachWatchObserver();
+    updateTheaterClass();
+  });
 
-  // Also run on initial load
-  window.addEventListener('load', fixMasthead);
+  document.addEventListener('yt-page-data-updated', updateTheaterClass);
+
+  // Poll until ytd-app and ytd-watch-flexy are in the DOM on initial load
+  function waitForElements() {
+    const app = document.querySelector('ytd-app');
+    const watchFlexy = document.querySelector('ytd-watch-flexy');
+
+    if (app) updateTheaterClass();
+    if (watchFlexy) attachWatchObserver();
+
+    // Keep polling if we're on the watch page but elements aren't ready yet
+    if (!app || (location.pathname === '/watch' && !watchFlexy)) {
+      setTimeout(waitForElements, 300);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForElements);
+  } else {
+    waitForElements();
+  }
 })();
